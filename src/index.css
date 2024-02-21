@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root {
+  --primary: #2381bc; /* Primary color, feel free to adjust */
+  --secondary: #329b8f; /* Secondary color, feel free to adjust */
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  background: var(--secondary);
+  color: #fefffe; /* Adjusted for better readability */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+p {
+  margin: 20px 0;
+}
+
+button {
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  color: #fff; /* Ensured consistency in color property */
+  background: var(--primary);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+
+
+header nav {
+  display: flex;
+  gap: 16px;
+  justify-content: end;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header nav h1 {
+  margin-right: auto;
+  border-bottom: 3px solid var(--primary);
+}
+
+header nav a {
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+header nav a.active {
+  background: var(--primary);
+}
+
+main {
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  /* Additional styling if needed */
+}
+
+.relative-container {
+  position: relative;
+  min-height: 100vh; /* Ensures it takes minimum full height */
+}
+
+.bottom-element {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* Additional styling if needed */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+
+.full-width-form {
+  
+  left: 0;
+  bottom: 0;
+  background-color: rgb(3, 3, 3); /* Or any color you prefer */
+  padding: 20px; /* Adjusted for a more typical form padding */
+  z-index: 1000; /* Ensures it stays on top of other content */
+  margin-top: 100vh; /* Adjust as needed */
+  position: bottom; 
+  width: 1000px;
+  
+  
+  
+  
+  
+  /* If you want to keep it within the normal document flow */
+  /* Other styles */
+}
+
+
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+  color: #020202; /* Ensures input text is visible */
+  padding: 10px; /* Increased for better input field usability */
+  width: 100%;
+}
+
+.yes {
+  text-align: center;
+}
+
+
