@@ -7,10 +7,21 @@ import About from "./pages/About.jsx"
 import BuyLeads from "./pages/BuyLeads.jsx"
 import Contact from "./pages/ContactUs.jsx"
 import ContactForm from './components/ContactForm.jsx';
+import axios from 'axios'
 
 
 export default function App() {
+ 
 
+  // const handleSubmit = async (event, formData) => {
+  //   event.preventDefault();
+
+  //   const res = await axios.post('/api/users', formData);
+
+  //   if (res.data.success) {
+  //     navigate('/me');
+  //   }
+  // };
   return (
     <BrowserRouter>
       <div className='App'>

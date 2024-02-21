@@ -2,7 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import util from 'util';
 import connectToDB from './db.js';
 
-export const db = await connectToDB('postgresql:///users');
+export const db = await connectToDB('postgresql:///leadsrc');
 
 export class Buyer extends Model {
     [util.inspect.custom]() {
@@ -17,10 +17,10 @@ export class Buyer extends Model {
             autoIncrement: true,
             primaryKey: true,
         },
-        dateCreated: {
-           type: DataTypes.Date,
-            allowNull: false, 
-        },
+        // dateCreated: {
+        //    type: DataTypes.DATE,
+        //     allowNull: false, 
+        // },
         fname: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -98,10 +98,10 @@ export class Buyer extends Model {
             autoIncrement: true,
             primaryKey: true,
         },
-        startDate: {
-            type: DataTypes.DATE,
-            allowNull: false,
-        },
+        // startDate: {
+        //     type: DataTypes.DATE,
+        //     allowNull: false,
+        // },
         firstName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -114,8 +114,8 @@ export class Buyer extends Model {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        phoneNumber: {
-            type: DataTypes.INTEGER,
+        phone: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
         company: {
@@ -126,6 +126,7 @@ export class Buyer extends Model {
     {
         modelName: 'seller',
         sequelize: db,
+        timestamps: true,
     },
   )
 
@@ -135,10 +136,10 @@ export class Buyer extends Model {
     }
   }
 
-  Messages.init(
+  Message.init(
     {
         messageId: {
-            type: DataTypes.TEXT,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },

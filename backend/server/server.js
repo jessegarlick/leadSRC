@@ -1,5 +1,4 @@
 // express, morgan, express-session, ViteExpress, 
-
 import express from "express";
 import morgan from "morgan"
 import session from "express-session"
@@ -19,7 +18,12 @@ app.use(
   })
 );
 
+// import handlerFunctions
+import handlerFunctions from './controller.js'
+
 // Routes
+app.post('/api/seller/create', handlerFunctions.createSeller)
+
 
 // Run the server
 ViteExpress.listen(app, 9122, () => {
