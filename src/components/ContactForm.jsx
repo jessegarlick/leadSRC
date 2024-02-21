@@ -50,6 +50,7 @@ function ContactForm() {
                 placeholder="First Name"  
                 // value={firstName}
                 onChange={e => setFirstName(e.target.value)}
+                required
             />
         </div>
         <div className="form-group">
