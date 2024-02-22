@@ -2,11 +2,12 @@ import './index.css';
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom"; 
 import Home from "./pages/Home";
 import Process from "./pages/Process"
-import GoSolar from "./pages/GoSolar.jsx"
+import Solar from "./pages/Solar.jsx"
 import About from "./pages/About.jsx"
 import BuyLeads from "./pages/BuyLeads.jsx"
 import Contact from "./pages/ContactUs.jsx"
 import ContactForm from './components/ContactForm.jsx';
+import Blog from './pages/Blog.jsx';
 import axios from 'axios'
 
 
@@ -33,6 +34,7 @@ export default function App() {
           <NavLink to="process">Our Process</NavLink>
           <NavLink to="about">About</NavLink>
           <NavLink to="leads">Buy Leads</NavLink>
+          <NavLink to="blog">Blog</NavLink>
           <NavLink to="contact">Contact Us</NavLink>
 
 
@@ -43,16 +45,17 @@ export default function App() {
         
         <Routes>
           <Route index element={<Home />} />
-          <Route path="solar" element={<GoSolar />} />
+          <Route path="solar" element={<Solar />} />
           <Route path="process" element={<Process />} />
           <Route path="about" element={<About />} />
           <Route path="leads" element={<BuyLeads />} />
+          <Route path="blog" element={<Blog />} />
           <Route path="contact" element={<Contact />} />
 
 
         </Routes>
       
-       <ContactForm />
+       
       </main>
       
      

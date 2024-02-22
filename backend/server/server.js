@@ -23,6 +23,7 @@ import handlerFunctions from './controller.js'
 
 // Routes
 app.post('/api/seller/create', handlerFunctions.createSeller)
+app.post('/api/buyer/create', handlerFunctions.createBuyer)
 
 
 // Run the server

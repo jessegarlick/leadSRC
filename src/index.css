@@ -99,7 +99,7 @@ main {
   background-color: rgb(3, 3, 3); /* Or any color you prefer */
   padding: 20px; /* Adjusted for a more typical form padding */
   z-index: 1000; /* Ensures it stays on top of other content */
-  margin-top: 100vh; /* Adjust as needed */
+  margin-top: 10vh; /* Adjust as needed */
   position: bottom; 
   width: 1000px;
   
@@ -110,6 +110,18 @@ main {
   /* If you want to keep it within the normal document flow */
   /* Other styles */
 }
+
+.buyer-form {
+  left: 0;
+  bottom: 0;
+  background-color: rgb(3, 3, 3); /* Or any color you prefer */
+  padding: 20px; /* Adjusted for a more typical form padding */
+  z-index: 1000; /* Ensures it stays on top of other content */
+  margin-top: 10vh; /* Adjust as needed */
+  position: top; 
+  width: 1000px;
+}
+
 
 
 

@@ -34,7 +34,7 @@ export class Buyer extends Model {
             allowNull: false,
         },
         streetNumber: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
@@ -47,35 +47,35 @@ export class Buyer extends Model {
             allowNull: false,
         },
         zip: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         cellPhone: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         homePhone: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
+            type: DataTypes.STRING,
+            allowNull: true,
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         homeowner: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         shade: { 
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         monthlyRate: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         creditScore: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: false,
         }
     },
