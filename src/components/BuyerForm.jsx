@@ -6,20 +6,20 @@ import { useNavigate } from 'react-router-dom';
 
 function BuyerForm() {
     
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
-    const [homePhone, setHomePhone] = useState('')
-    const [homeowner, setHomeowner] = useState('')
-    const [streetName, setStreetName] = useState('')
-    const [streetNumber, setStreetNumber] = useState('')
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
-    const [zip, setZip] = useState('')
-    const [monthlyRate, setMonthlyRate] = useState('')
-    const [shade, setShade] = useState('')
-    const [creditScore, setCreditScore] = useState('')
+    const [firstName, setFirstName] = useState('Test')
+    const [lastName, setLastName] = useState('Test')
+    const [email, setEmail] = useState('Test@test.com')
+    const [phone, setPhone] = useState('Test')
+    const [homePhone, setHomePhone] = useState('test')
+    const [homeowner, setHomeowner] = useState('test')
+    const [streetName, setStreetName] = useState('test')
+    const [streetNumber, setStreetNumber] = useState('test')
+    const [city, setCity] = useState('test')
+    const [state, setState] = useState('test')
+    const [zip, setZip] = useState('test')
+    const [monthlyRate, setMonthlyRate] = useState('test')
+    const [shade, setShade] = useState('test')
+    const [creditScore, setCreditScore] = useState('test')
 
 
 
@@ -46,15 +46,20 @@ function BuyerForm() {
             shade: shade,
             creditScore: creditScore,
         }
-        const res = await axios.post('/api/buyer/create', formData)
-        .then ((res) => {
+        try {
+            const res = await axios.post('/api/buyer/create', formData);
+            console.log(res.data)
             if (res.data.message === 'new buyer created') {
-            // navigate('/home');
-            setSent(true)
-            alert('Message Sent.')
-            resetForm()
-        } 
-    })
+                setSent(true);
+                
+                resetForm();
+                // Uncomment the next line if navigation is desired after form submission
+                // navigate('/home');
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+            // Handle the error (e.g., show an error message)
+        }
     
         
 

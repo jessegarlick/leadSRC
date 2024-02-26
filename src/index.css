@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 :root {
-  --primary: #2381bc; /* Primary color, feel free to adjust */
-  --secondary: #329b8f; /* Secondary color, feel free to adjust */
+  --primary: #17406a; /* Primary color, feel free to adjust */
+  --secondary: #fbfbfb; /* Secondary color, feel free to adjust */
 }
 
 body {
@@ -140,4 +140,59 @@ main {
 
 .hyper-link:hover {
   color: blue
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  text-align: right;
+  display: flex;
+  
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute; /* Use absolute positioning */
+  top: 0; /* Align to the top */
+  right: 0; /* Align to the right */
+  padding: 20px; /* Add some spacing */
+  
+}
+/* Base styles for sections */
+.solar-section {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  color: #fff; /* White text color */
+}
+
+/* Unique styles for each section */
+.solar-calculator {
+  background-color: #007bff; /* Blue */
+}
+
+.solar-financing {
+  background-color: #28a745; /* Green */
+}
+
+.solar-tax-credits {
+  background-color: #dc3545; /* Red */
+}
+
+/* Style adjustments for readability */
+.solar-section h1, .solar-section h2, .solar-section h3, .solar-section h4 {
+  margin-bottom: 0.5rem;
+}
+
+.solar-section p {
+  cursor: pointer;
+  text-decoration: underline;
 }
