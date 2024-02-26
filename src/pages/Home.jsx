@@ -11,11 +11,11 @@ function Home() {
             <SolarButton />
             <h1>Solar financing</h1>
             <h2>Learn how you can pay over time and make your clean energy dreams a reality. Review your solar financing options today.</h2>
-            <p onClick={() => navigate(`/blog`)}>Learn about solar financing</p>
+            <p className="hyper-link" onClick={() => navigate(`/blog`)}>Learn about solar financing</p>
             <h3>Solar tax credits & rebates</h3>
             <h4>We'll help you navigate all of your savings opportunities with our state-specific guide.</h4>
 
-            <p onClick={() => navigate(`/blog`)}>Explore solar credits and rebates </p>
+            <p className="hyper-link" onClick={() => navigate(`/blog`)}>Explore solar credits and rebates </p>
         </div>
          
     )

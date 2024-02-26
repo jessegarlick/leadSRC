@@ -46,13 +46,35 @@ function BuyerForm() {
             shade: shade,
             creditScore: creditScore,
         }
-        const res = await axios.post('/api/buyer/create', formData);
-    
-        if (res.data.message === 'new buyer created') {
+        const res = await axios.post('/api/buyer/create', formData)
+        .then ((res) => {
+            if (res.data.message === 'new buyer created') {
             // navigate('/home');
             setSent(true)
-        }
+            alert('Message Sent.')
+            resetForm()
+        } 
+    })
+    
+        
+
     };
+    function resetForm() {
+        setFirstName('')
+        setLastName('')
+        setEmail('')
+        setPhone('')
+        setHomePhone('')
+        setHomeowner('')
+        setStreetName('')
+        setStreetNumber('')
+        setCity('')
+        setZip('')
+        setMonthlyRate('')
+        setShade('')
+        setCreditScore('')
+    }
+
 
   return sent ? (
     <div>Thanks for your submission!</div>
@@ -66,20 +88,21 @@ function BuyerForm() {
         <div className="form-group">
             <label htmlFor="firstName">First Name</label>
             <input 
-                type="text" 
-                id="firstName" 
-                name="firstName" 
-                placeholder="First Name"  
-                // value={firstName}
-                onChange={e => setFirstName(e.target.value)}
-                required
-            />
+            type="text" 
+            id="firstName" 
+            name="firstName" 
+            placeholder="First Name"  
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+            required
+        />
         </div>
         <div className="form-group">
             <label htmlFor="lastName">Last Name</label>
             <input type="text" 
             id="lastName" name="lastName" 
-            placeholder="Last Name"  
+            placeholder="Last Name"
+            value={lastName}  
             onChange={e => setLastName(e.target.value)}
             />
         </div>
@@ -87,7 +110,8 @@ function BuyerForm() {
             <label htmlFor="email">Email</label>
             <input type="email" 
             id="email" name="email" 
-            placeholder="Email" 
+            placeholder="Email"
+            value={email} 
             onChange={e => setEmail(e.target.value)}
             />
         </div>
@@ -96,7 +120,8 @@ function BuyerForm() {
             <input type="tel" 
             id="phone" 
             name="phone" 
-            placeholder="Phone Number" 
+            placeholder="Phone Number"
+            value={phone} 
             onChange={e => setPhone(e.target.value)}
             />
         </div>
@@ -105,7 +130,8 @@ function BuyerForm() {
             <input type="text" 
             id="homePhone" 
             name="secondary number" 
-            placeholder="Secondary Phone Number" 
+            placeholder="Secondary Phone Number"
+            value={homePhone} 
             onChange={e => setHomePhone(e.target.value)}
             />
         </div>
@@ -114,7 +140,8 @@ function BuyerForm() {
             <input type="text" 
             id="homeowner" 
             name="homeowner" 
-            placeholder="Homeowner" 
+            placeholder="Homeowner"
+            value={homeowner} 
             onChange={e => setHomeowner(e.target.value)}
             />
         </div>
@@ -123,7 +150,8 @@ function BuyerForm() {
             <input type="text" 
             id="streetName" 
             name="streetName" 
-            placeholder="Street Name" 
+            placeholder="Street Name"
+            value={streetName} 
             onChange={e => setStreetName(e.target.value)}
             />
         </div>
@@ -132,7 +160,8 @@ function BuyerForm() {
             <input type="text" 
             id="streetNumber" 
             name="streetNumber" 
-            placeholder="Street Number" 
+            placeholder="Street Number"
+            value={streetNumber} 
             onChange={e => setStreetNumber(e.target.value)}
             />
         </div>
@@ -142,6 +171,7 @@ function BuyerForm() {
             id="city" 
             name="city" 
             placeholder="City" 
+            value={city}
             onChange={e => setCity(e.target.value)}
             />
         </div>
@@ -150,7 +180,8 @@ function BuyerForm() {
             <input type="text" 
             id="state" 
             name="state" 
-            placeholder="State" 
+            placeholder="State"
+            value={state} 
             onChange={e => setState(e.target.value)}
             />
         </div>
@@ -159,7 +190,8 @@ function BuyerForm() {
             <input type="text" 
             id="zip" 
             name="zip" 
-            placeholder="Zip Code" 
+            placeholder="Zip Code"
+            value={zip} 
             onChange={e => setZip(e.target.value)}
             />
         </div>
@@ -169,15 +201,17 @@ function BuyerForm() {
             id="monthlyRate" 
             name="monthlyRate" 
             placeholder="Energy Rate" 
+            value={monthlyRate}
             onChange={e => setMonthlyRate(e.target.value)}
             />
         </div>
         <div className="form-group">
-            <label htmlFor="homePhone">Do you have shade?</label>
+            <label htmlFor="shade">Do you have shade?</label>
             <input type="text" 
             id="shade" 
             name="shade" 
-            placeholder="Shade" 
+            placeholder="Shade"
+            value={shade} 
             onChange={e => setShade(e.target.value)}
             />
         </div>
@@ -187,6 +221,7 @@ function BuyerForm() {
             id="creditScore" 
             name="creditScore" 
             placeholder="Credit Score" 
+            value={creditScore}
             onChange={e => setCreditScore(e.target.value)}
             />
         </div>
