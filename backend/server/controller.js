@@ -12,6 +12,7 @@ const handlerFunctions = {
       email: email,
       phone: phone,
       company: company,
+
     });
 
     res.send({
@@ -19,7 +20,48 @@ const handlerFunctions = {
       seller: newSeller,
     });
   },
+  createUser: async (req, res) => {
+    const { username, password, clientId} = req.body
+
+    const newUser = await User.create({
+      username: username,
+      password: password
+    })
+    await Seller.update({ userId: newUser.userId}, {
+      where: {
+        clientId: clientId
+      }
+
+    })
+
+    res.send({
+      message: "new user created",
+      user: newUser,
+    })
+  },
+  getProfile: async (req, res) => {
+    const { userId } = req.session.user
+    const user = await User.findOne({
+      where: {
+        userId
+      }, 
+      include: [
+        {
+          model: Seller, 
+        },
+        {
+          model: Buyer,
+        }
+      ]
+    })
+    res.send({
+      message: "seller data retrieved",
+      data: user
+    })
+  },
+
   createBuyer: async (req, res) => {
+    
     const {
       firstName,
       lastName,
@@ -36,8 +78,12 @@ const handlerFunctions = {
       shade,
       creditScore,
     } = req.body;
-    console.log("function hit");
+    console.log(firstName)
+    console.log("asldfkjaldkfgjalksdjglaksjdglaksdjg")
 
+    console.log("Creating new buyer...");
+
+    
     const newBuyer = await Buyer.create({
       fname: firstName,
       lname: lastName,
@@ -54,75 +100,69 @@ const handlerFunctions = {
       shade: shade,
       creditScore: creditScore,
     });
-    // const router = express.Router();
 
-    const transport = {
+    
+    const transporter = nodemailer.createTransport({
       host: "sandbox.smtp.mailtrap.io",
       port: 2525,
       auth: {
         user: "9b2dcbcef92243",
         pass: "4e38c4efe069b6",
       },
-    };
-    const transporter = nodemailer.createTransport(transport);
-    transporter.verify((error, success) => {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log("Server is ready to take messages");
-      }
     });
 
-      let content = `firstName: ${firstName} \n 
-  lastName: ${lastName} \n 
-  email: ${email} \n 
-  phone: ${phone} \n 
-  homePhone: ${homePhone} \n 
-  homeowner: ${homeowner} \n
-  streetName: ${streetName} \n
-  streetNumber: ${streetNumber} \n
-  city: ${city} \n 
-  zip: ${zip} \n 
-  monthlyRate: ${monthlyRate} \n 
-  shade: ${shade} \n 
-  creditScore: ${creditScore} \n `;
-      let mail = {
-        from: firstName,
-        lastName,
-        to: email, // Change to email address that you want to receive messages on
-        subject: "New Message from Contact Form",
-        text: content,
-      };
-      transporter.sendMail(mail, (err, data) => {
-        if (err) {
-          res.json({
-            status: "fail",
-          });
-        } else {
-          res.json({
-            status: "success",
-          });
-        }
-      });
     
+    const content = `firstName: ${firstName} \n 
+      lastName: ${lastName} \n 
+      phone: ${phone} \n 
+      homePhone: ${homePhone} \n 
+      homeowner: ${homeowner} \n
+      streetName: ${streetName} \n
+      streetNumber: ${streetNumber} \n
+      city: ${city} \n 
+      zip: ${zip} \n 
+      monthlyRate: ${monthlyRate} \n 
+      shade: ${shade} \n 
+      email: ${email} \n 
+      creditScore: ${creditScore}`;
 
-    console.log("new buyer created");
+    const mailOptions = {
+      from: `"${firstName} ${lastName}" <${email}>`, // Sender address
+      to: "jessegarlick11@gmail.com", // List of recipients
+      subject: "New Buyer Submission", // Subject line
+      text: content, // Plain text body
+    };
 
-    res.send({
-      message: "new buyer created",
-      buyer: newBuyer,
-    });
+    
+    try {
+      const emailResponse = await transporter.sendMail(mailOptions);
+      console.log("Email sent successfully:", emailResponse);
+      res.json({
+        message: "New buyer created and email sent successfully.",
+        status: "success",
+        buyer: newBuyer,
+      });
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      res.json({
+        message: "New buyer created but failed to send email.",
+        status: "fail",
+        error: error.message,
+        buyer: newBuyer,
+      });
+    }
   },
+
   sessionCheck: async (req, res) => {
     // when this function is called, we simply want to check if there is a userId on the req.session object, and send it back if so
-    if (req.session.userId) {
+    if (req.session.user) {
       // if you want more info about the user to return, you can just query right now with a findByPk():
       // const user = await User.findByPk(req.session.userId)
 
       res.send({
         message: "user is still logged in",
         success: true,
-        userId: req.session.userId,
+        userId: req.session.user.userId,
       });
       return;
     } else {
@@ -169,7 +209,7 @@ const handlerFunctions = {
     // if we're here, then the user exists
     // AND their password was correct!
     // So I want to "save" their userId to a cookie --> req.session
-    req.session.userId = user.userId;
+    req.session.user = user;
     // req.session is a cookie saved on the user's browser.
     // so each user that visits our site sends their custom "req" object to us, and therefore, as far as their browser knows, they are "logged in"
 
@@ -179,7 +219,9 @@ const handlerFunctions = {
     res.send({
       message: "user logged in",
       success: true,
-      userId: req.session.userId,
+      username: user.username,
+      userId: user.userId,
+
     });
   },
 

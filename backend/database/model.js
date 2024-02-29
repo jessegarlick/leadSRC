@@ -1,6 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import util from "util";
 import connectToDB from "./db.js";
+import url from "url"
 
 export const db = await connectToDB("postgresql:///leadsrc");
 
@@ -25,6 +26,7 @@ User.init(
       type: DataTypes.STRING(500),
       allowNull: false,
     },
+  
   },
   {
     modelName: "user",
@@ -124,10 +126,9 @@ Seller.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    // startDate: {
-    //     type: DataTypes.DATE,
-    //     allowNull: false,
-    // },
+    userId: {
+      type: DataTypes.INTEGER,
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -180,8 +181,15 @@ Message.init(
   }
 );
 
-Seller.hasMany(Message, { foreignKey: "clientId" });
-Message.belongsTo(Seller, { foreignKey: "clientId" });
+User.hasOne(Seller, { foreignKey: "userId" });
+Seller.belongsTo(User, { foreignKey: "userId" });
 
-Buyer.hasMany(Message, { foreignKey: "buyerId" });
-Message.belongsTo(Seller, { foreignKey: "buyerId" });
+User.hasMany(Buyer, { foreignKey: "userId" });
+Buyer.belongsTo(User, { foreignKey: "userId" });
+
+if (process.argv[1] === url.fileURLToPath(import.meta.url)) {
+  console.log('Syncing database...');
+  await db.sync({force: true})
+  console.log('Finished syncing database!');
+}
+

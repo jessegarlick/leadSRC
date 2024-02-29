@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Profile from "./Profile";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -17,8 +18,9 @@ const LoginPage = () => {
     try {
       const res = await axios.post("/api/login", bodyObj);
       if (res.data.success) {
-        dispatch({ type: "USER_AUTH", payload: res.data.userId });
-        navigate("/"); // Redirect to home page after login
+        console.log('login func', res.data)
+        dispatch({ type: "USER_AUTH", payload: {userId: res.data.userId, username: username} });
+        navigate("/profile"); 
       } else {
         alert(res.data.message);
       }

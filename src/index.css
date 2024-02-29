@@ -10,7 +10,7 @@ body {
   padding: 20px;
   font-family: "Poppins", sans-serif;
   background: var(--secondary);
-  color: #fefffe; /* Adjusted for better readability */
+  color: #010102; /* Adjusted for better readability */
 }
 
 * {
@@ -27,7 +27,7 @@ button {
   border: none;
   padding: 8px;
   border-radius: 4px;
-  color: #fff; /* Ensured consistency in color property */
+  color: #5366a3; /* Ensured consistency in color property */
   background: var(--primary);
   cursor: pointer;
 }
@@ -35,8 +35,6 @@ button {
 button:hover {
   background-color: #0056b3; /* Darker shade for hover effect */
 }
-
-
 
 header nav {
   display: flex;
@@ -84,74 +82,54 @@ main {
   /* Additional styling if needed */
 }
 
-.App {
+.App { /* Preserved as requested */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-
-
 .full-width-form {
-  
-  left: 0;
-  bottom: 0;
+  /* Styles adjusted for better form presentation */
   background-color: rgb(3, 3, 3); /* Or any color you prefer */
-  padding: 20px; /* Adjusted for a more typical form padding */
+  padding: 20px;
   z-index: 1000; /* Ensures it stays on top of other content */
-  margin-top: 10vh; /* Adjust as needed */
-  position: bottom; 
-  width: 1000px;
-  
-  
-  
-  
-  
-  /* If you want to keep it within the normal document flow */
-  /* Other styles */
+  width: 100%; /* Full width */
+  position: fixed; /* Adjusted for proper positioning */
+  bottom: 0; /* Align at the bottom */
+  left: 0; /* Align to the left */
 }
 
-.buyer-form {
-  left: 0;
-  bottom: 0;
-  background-color: rgb(3, 3, 3); /* Or any color you prefer */
-  padding: 20px; /* Adjusted for a more typical form padding */
-  z-index: 1000; /* Ensures it stays on top of other content */
-  margin-top: 10vh; /* Adjust as needed */
-  position: top; 
-  width: 1000px;
+.buyer-form { /* Preserved as requested */
+  background-color: rgb(145, 143, 143); /* Or any color you prefer */
+  padding: 20px;
+  z-index: 1000;
+  position: relative; /* Adjusted for relative positioning */
+  width: 100%; /* Full width */
 }
-
-
-
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="tel"] {
-  color: #020202; /* Ensures input text is visible */
-  padding: 10px; /* Increased for better input field usability */
+  color: #020202;
+  padding: 10px;
   width: 100%;
 }
 
-.yes {
+.yes { /* Preserved as requested */
   text-align: center;
 }
 
-
 .hyper-link:hover {
-  color: blue
+  color: blue;
 }
 
 .login-form input[type="text"],
 .login-form input[type="password"] {
   text-align: right;
   display: flex;
-  
 }
 
 body, html {
-  margin: 0;
-  padding: 0;
   width: 100%;
   height: 100%;
 }
@@ -160,34 +138,34 @@ body, html {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: absolute; /* Use absolute positioning */
-  top: 0; /* Align to the top */
-  right: 0; /* Align to the right */
-  padding: 20px; /* Add some spacing */
-  
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
 }
-/* Base styles for sections */
+
 .solar-section {
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 8px;
-  color: #fff; /* White text color */
+  color: #fff;
 }
 
-/* Unique styles for each section */
 .solar-calculator {
-  background-color: #007bff; /* Blue */
+  background-color: #007bff;
 }
 
 .solar-financing {
-  background-color: #28a745; /* Green */
+  background-color: #28a745;
 }
 
 .solar-tax-credits {
-  background-color: #dc3545; /* Red */
+  background-color: #dc3545;
+}
+.solar-movement {
+  background-color: #040303;
 }
 
-/* Style adjustments for readability */
 .solar-section h1, .solar-section h2, .solar-section h3, .solar-section h4 {
   margin-bottom: 0.5rem;
 }
@@ -195,4 +173,74 @@ body, html {
 .solar-section p {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #050404;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.navigation-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #6a98c6;
+  color: rgb(43, 103, 133);
+  cursor: pointer;
+}
+
+.navigation-buttons button:hover {
+  background-color: #f4f5f6;
+}
+
+.navigation-buttons button[type="submit"] {
+  background-color: #f9fcfa;
+}
+
+.navigation-buttons button[type="submit"]:hover {
+  background-color: #f5f9f6;
+}
+
+.navigation-buttons button:first-child {
+  background-color: #fbfcfe;
+}
+
+.navigation-buttons button:first-child:hover {
+  background-color: #f8fafb;
+}
+
+.form-container > div {
+  padding: 20px;
+  background-color: #d4edda;
+  color: #f4f9f4;
+  border-radius: 4px;
+  border: 1px solid #c3e6cb;
 }

@@ -19,12 +19,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoginPage from "./pages/Login.jsx"; 
+import BuySolarPreview from "./pages/BuySolarPreview.jsx";
+import BuySolar from "./pages/BuySolar.jsx";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const userId = useSelector((state) => state.userId);
+
+  
 
   const dispatch = useDispatch();
 
@@ -61,6 +66,7 @@ function App() {
         type: "LOGOUT",
       });
     }
+  
   };
 
   const sessionCheck = async () => {
@@ -77,11 +83,21 @@ function App() {
     sessionCheck();
   }, []);
 
-  // Import statements remain unchanged
-// Add this import for your new LoginPage
-
-// Inside App function, before the return statement:
-// No changes needed to your existing hooks and functions
+  const LogoutButton = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const handleLogout = async () => {
+      const res = await axios.get("/api/logout");
+      if (res.data.success) {
+        dispatch({ type: "LOGOUT" });
+        navigate('/');
+      }
+    };
+  
+    return (
+      <button onClick={handleLogout}>Logout</button>
+    );
+  };
 
 return (
   <BrowserRouter>
@@ -94,37 +110,35 @@ return (
             </NavLink>
           </div>
           <div>
-            <NavLink to="solar">Go Solar</NavLink>
-            <NavLink to="process">Our Process</NavLink>
-            <NavLink to="about">About</NavLink>
-            <NavLink to="leads">Buy Leads</NavLink>
-            <NavLink to="blog">Blog</NavLink>
-            <NavLink to="contact">Contact Us</NavLink>
-            {userId ? (
-              <button onClick={handleLogout}>Logout</button>
-            ) : (
-              <Link to="/login">Login</Link> // Changed this line
-            )}
+            <NavLink to="/solar">Go Solar</NavLink>
+            <NavLink to="/process">Our Process</NavLink>
+            <NavLink to="/about">About Us</NavLink>
+            <NavLink to="/leads">Buy Leads</NavLink>
+            <NavLink to="/blog">Blog</NavLink>
+            <NavLink to="/contact">Contact Us</NavLink>
+            {userId ? <LogoutButton /> : <Link to="/login">Login</Link>}
           </div>
         </nav>
       </header>
       <main>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="solar" element={<Solar />} />
-          <Route path="process" element={<Process />} />
-          <Route path="about" element={<About />} />
-          <Route path="leads" element={<BuyLeads />} />
-          <Route path="blog" element={<Blog />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="login" element={<LoginPage />} /> // Add this line
+          <Route path="/solar" element={<Solar />} />
+          <Route path="/process" element={<Process />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/leads" element={<BuyLeads />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<LoginPage />} /> 
+          <Route path="/post" element={<BuySolar />} /> 
+          <Route path="/profile" element={<Profile />} /> 
         </Routes>
       </main>
     </div>
   </BrowserRouter>
 );
 
-// Export statement remains unchanged
+
 
 }
 

@@ -1,6 +1,7 @@
 const initialState = {
     userId: null,
-    otherValue: "hello"
+    otherValue: "hello",
+    username: ""
   };
   
   // front end components will dispatch an action object :
@@ -10,7 +11,8 @@ const initialState = {
       case "USER_AUTH":
         return {
           ...state,
-          userId: action.payload,
+          userId: action.payload.userId,
+          username: action.payload.username
         };
   
         // triggered from front end with this dispatch action object: { type: "LOGOUT" }

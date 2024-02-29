@@ -20,7 +20,6 @@ const sellers = [
         phone: '801-358-7735',
         company: 'CUWSS',
     },
-
 ]
 
 for  (const seller of sellers) {
@@ -33,6 +32,7 @@ for (const user of users) {
     username: user.toLowerCase(),
     password: "test"
   })
+
 }
 
 await db.close()
