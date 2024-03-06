@@ -1,4 +1,4 @@
-import { Buyer, Seller, Message, User, db } from '../database/model.js'
+import { Buyer, Seller, db } from '../database/model.js'
 
 console.log('Syncing database...');
 await db.sync({ force: true });
@@ -12,6 +12,10 @@ const sellers = [
         email: 'jessegarlick11@gmail.com',
         phone: '801-358-7736',
         company: 'CUWSS',
+        username: 'jesse',
+        password: "test",
+        isAdmin: true,
+        isClient: true,
     },
     {
         firstName: 'Sean',
@@ -19,20 +23,15 @@ const sellers = [
         email: 'Sean@gmail.com',
         phone: '801-358-7735',
         company: 'CUWSS',
+        username: 'sean',
+        password: "test",
+        
     },
 ]
 
 for  (const seller of sellers) {
     await Seller.create(seller)
 }
-let users = ["Cat", "Ty", "Lincoln", "Jesse", "Josh", "Jackson", "Michael", "David"]
 
-for (const user of users) {
-  await User.create({
-    username: user.toLowerCase(),
-    password: "test"
-  })
-
-}
 
 await db.close()

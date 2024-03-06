@@ -1,40 +1,39 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import SolarButton from "../components/SolarButton";
+import "../index.css"; 
+import sunGreenMountainsImage from "../images/sun_green_mountains_image.jpeg"; 
+
 
 function Home() {
   const navigate = useNavigate();
+
   return (
-    <div className="solar-sections">
-      <div className="solar-section solar-calculator">
+    <div className="home-container">
+      <div className="home-content">
         <h2>SOLAR CALCULATOR</h2>
-        <h1>Wondering what solar might cost you?</h1>
-        <h3>
-          We’ll estimate your upfront costs, savings, and financing options — no
-          commitment required.
-        </h3>
-        <SolarButton />
+        <p>
+          Wondering what solar might cost you? We’ll estimate your upfront
+          costs, savings, and financing options — no commitment required.
+        </p>
+        <button onClick={() => navigate("/solar")}>Learn more</button>
       </div>
 
-      <div className="solar-section solar-financing">
-        <h1>Solar financing</h1>
-        <h2>
+      <div className="home-content">
+        <h2>SOLAR FINANCING</h2>
+        <p>
           Learn how you can pay over time and make your clean energy dreams a
           reality. Review your solar financing options today.
-        </h2>
-        <p className="hyper-link" onClick={() => navigate(`/blog`)}>
-          Learn about solar financing
         </p>
+        <button onClick={() => navigate("/blog")}>Learn more</button>
       </div>
 
-      <div className="solar-section solar-tax-credits">
-        <h3>Solar tax credits & rebates</h3>
-        <h4>
+      <div className="home-content">
+        <h2>SOLAR TAX CREDITS</h2>
+        <p>
           We'll help you navigate all of your savings opportunities with our
           state-specific guide.
-        </h4>
-        <p className="hyper-link" onClick={() => navigate(`/blog`)}>
-          Explore solar credits and rebates{" "}
         </p>
+        <button onClick={() => navigate("/blog")}>Learn more</button>
       </div>
     </div>
   );

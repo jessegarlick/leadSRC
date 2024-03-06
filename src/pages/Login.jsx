@@ -1,10 +1,8 @@
-// pages/LoginPage.jsx
-
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Profile from "./Profile";
+import "../index.css"; 
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -17,10 +15,14 @@ const LoginPage = () => {
     const bodyObj = { username, password };
     try {
       const res = await axios.post("/api/login", bodyObj);
-      if (res.data.success) {
-        console.log('login func', res.data)
-        dispatch({ type: "USER_AUTH", payload: {userId: res.data.userId, username: username} });
-        navigate("/profile"); 
+      
+      if (res.data.sellerId === 1) {
+        
+        dispatch({ type: "USER_AUTH", payload: { sellerId: res.data.sellerId, username: username } });
+        navigate("/admin");
+      } else if (res.data.success) {
+        dispatch({ type: "USER_AUTH", payload: { sellerId: res.data.sellerId, username: username } });
+        navigate("/profile");
       } else {
         alert(res.data.message);
       }
@@ -31,21 +33,33 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          value={username}
-          placeholder="Username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          value={password}
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
+    <div className="form-container">
+      <form onSubmit={handleLogin} className="buyer-form">
+        <div className="form-group">
+          <label htmlFor="username" className="form-label">Username</label>
+          <input
+            id="username"
+            type="text"
+            placeholder="Enter username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="form-control"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password" className="form-label">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="form-control"
+          />
+        </div>
+
+        <button type="submit" className="btn">Login</button>
       </form>
     </div>
   );

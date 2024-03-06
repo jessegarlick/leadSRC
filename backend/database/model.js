@@ -1,38 +1,10 @@
 import { DataTypes, Model } from "sequelize";
 import util from "util";
 import connectToDB from "./db.js";
-import url from "url"
+import url from "url";
 
 export const db = await connectToDB("postgresql:///leadsrc");
 
-export class User extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
-User.init(
-  {
-    userId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    username: {
-      type: DataTypes.STRING(30),
-      unique: true,
-      allowNull: false,
-    },
-    password: {
-      type: DataTypes.STRING(500),
-      allowNull: false,
-    },
-  
-  },
-  {
-    modelName: "user",
-    sequelize: db,
-  }
-);
 export class Buyer extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
@@ -57,11 +29,7 @@ Buyer.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    streetName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    streetNumber: {
+    streetAddress: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -121,7 +89,7 @@ export class Seller extends Model {
 
 Seller.init(
   {
-    clientId: {
+    sellerId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -149,6 +117,22 @@ Seller.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      default: false,
+    },
+    isClient: {
+      type: DataTypes.BOOLEAN,
+      default: false,
+    }
   },
   {
     modelName: "seller",
@@ -163,33 +147,11 @@ export class Message extends Model {
   }
 }
 
-Message.init(
-  {
-    messageId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    messageDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-  },
-  {
-    modelName: "message",
-    sequelize: db,
-  }
-);
+Seller.hasMany(Buyer, { foreignKey: "sellerId" });
+Buyer.belongsTo(Seller, { foreignKey: "sellerId" });
 
-User.hasOne(Seller, { foreignKey: "userId" });
-Seller.belongsTo(User, { foreignKey: "userId" });
-
-User.hasMany(Buyer, { foreignKey: "userId" });
-Buyer.belongsTo(User, { foreignKey: "userId" });
-
-if (process.argv[1] === url.fileURLToPath(import.meta.url)) {
-  console.log('Syncing database...');
-  await db.sync({force: true})
-  console.log('Finished syncing database!');
-}
-
+// if (process.argv[1] === url.fileURLToPath(import.meta.url)) {
+//   console.log('Syncing database...');
+//   await db.sync({force: true})
+//   console.log('Finished syncing database!');
+// }

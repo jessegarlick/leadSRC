@@ -1,17 +1,16 @@
 const initialState = {
-    userId: null,
+    sellerId: null,
     otherValue: "hello",
     username: ""
   };
   
-  // front end components will dispatch an action object :
-  // { type: "USER_AUTH", payload: userId }
+ 
   const reducer = (state = initialState, action) => {
     switch (action.type) {
       case "USER_AUTH":
         return {
           ...state,
-          userId: action.payload.userId,
+          sellerId: action.payload.sellerId,
           username: action.payload.username
         };
   
@@ -19,7 +18,7 @@ const initialState = {
       case "LOGOUT":
         return {
           ...state,
-          userId: null,
+          sellerId: null,
         };
   
       default:

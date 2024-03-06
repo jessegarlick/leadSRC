@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 import axios from 'axios'
+import "../index.css";
+
 
 
 
@@ -14,8 +16,8 @@ function BuyerForm() {
   const [phone, setPhone] = useState('test');
   const [homePhone, setHomePhone] = useState('test');
   const [homeowner, setHomeowner] = useState('test');
-  const [streetName, setStreetName] = useState('test');
-  const [streetNumber, setStreetNumber] = useState('test');
+  const [streetAddress, setStreetAddress] = useState('test');
+  
   const [city, setCity] = useState('test');
   const [state, setState] = useState('test');
   const [zip, setZip] = useState('test');
@@ -33,8 +35,7 @@ function BuyerForm() {
     { label: "Phone Number", type: "tel", name: "phone", placeholder: "Phone Number", value: phone, setter: setPhone },
     { label: "Secondary Phone Number", type: "text", name: "homePhone", placeholder: "Secondary Phone Number", value: homePhone, setter: setHomePhone },
     { label: "Are you a homeowner?", type: "text", name: "homeowner", placeholder: "Homeowner", value: homeowner, setter: setHomeowner },
-    { label: "Street Name", type: "text", name: "streetName", placeholder: "Street Name", value: streetName, setter: setStreetName },
-    { label: "Street Number", type: "text", name: "streetNumber", placeholder: "Street Number", value: streetNumber, setter: setStreetNumber },
+    { label: "Street Address", type: "text", name: "streetAddress", placeholder: "Street Address", value: streetAddress, setter: setStreetAddress },
     { label: "City", type: "text", name: "city", placeholder: "City", value: city, setter: setCity },
     { label: "State", type: "text", name: "state", placeholder: "State", value: state, setter: setState },
     { label: "Zip Code", type: "text", name: "zip", placeholder: "Zip Code", value: zip, setter: setZip },
@@ -66,8 +67,8 @@ function BuyerForm() {
       phone,
       homePhone,
       homeowner,
-      streetName,
-      streetNumber,
+      streetAddress,
+    
       city,
       state,
       zip,
@@ -98,8 +99,8 @@ function BuyerForm() {
     setPhone('test');
     setHomePhone('test');
     setHomeowner('test');
-    setStreetName('test');
-    setStreetNumber('test');
+    setStreetAddress('test');
+   
     setCity('test');
     setState('test');
     setZip('test');
@@ -117,7 +118,7 @@ function BuyerForm() {
     <div className="form-container">
       <form className="buyer-form">
         <header>
-          <h1>Interested in solar?</h1>
+          <h2>Interested in solar?</h2>
         </header>
         <div className="form-group">
           <label htmlFor={currentQuestion.name}>{currentQuestion.label}</label>
@@ -132,11 +133,11 @@ function BuyerForm() {
         </div>
         <div className="navigation-buttons">
           {currentQuestionIndex > 0 && (
-            <button type="button" onClick={() => setCurrentQuestionIndex(currentQuestionIndex - 1)}>
-              Previous
+            <button type="button" className="btn" onClick={() => setCurrentQuestionIndex(currentQuestionIndex - 1)}>
+            Previous
             </button>
           )}
-          <button type="button" onClick={handleNext}>
+          <button type="button" className="btn" onClick={handleNext}>
             {currentQuestionIndex < questions.length - 1 ? "Next" : "Submit"}
           </button>
         </div>

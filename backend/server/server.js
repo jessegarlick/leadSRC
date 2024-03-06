@@ -32,9 +32,15 @@ app.post('/api/buyer/create', handlerFunctions.createBuyer)
 app.get('/api/session-check', handlerFunctions.sessionCheck)
 app.post('/api/login', handlerFunctions.login)
 app.get('/api/logout', handlerFunctions.logout)
+app.get('/api/seller', handlerFunctions.getSellers)
+app.get('/api/buyer', handlerFunctions.getBuyers)
+app.delete('/api/buyer/delete/:buyerId', handlerFunctions.deleteBuyer)
+app.delete('/api/seller/delete/:sellerId', handlerFunctions.deleteSeller)
+app.put('/api/buyer/update/:buyerId', handlerFunctions.updateBuyer)
+app.put('/api/seller/update/:sellerId', handlerFunctions.updateSeller)
+app.post('/api/assignBuyer', handlerFunctions.assignBuyer)
 app.get('/api/profile', handlerFunctions.getProfile)
-
-
+app.get('/api/seller/:sellerId', handlerFunctions.getSellerById); // Ensure getSellerById is correctly imported
 
 // Run the server
 ViteExpress.listen(app, 9122, () => {

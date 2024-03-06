@@ -1,12 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "../index.css";
 
 function BuySolarPreview() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
-    <div>
-      <h1>Buying solar panels in 2024: The complete guide</h1>
-      <h5>
+    <div className="process-container">
+      <h1 className="process-title">
+        Buying solar panels in 2024: The complete guide
+      </h1>
+      <p className="process-description">
         Rooftop solar panels have transitioned from being considered luxury
         items to practical investments for many homeowners. Opting for solar
         energy can lead to substantial savings on electricity bills, reduce
@@ -15,10 +18,10 @@ function BuySolarPreview() {
         drastically cutting your electricity expenses. However, it's a
         significant investment, so it's crucial to evaluate its benefits for
         your specific situation before proceeding.
-      </h5>
+      </p>
       <p className="hyper-link" onClick={() => navigate(`/post`)}>
-          Learn more
-        </p>
+        Learn more
+      </p>
     </div>
   );
 }

@@ -22,12 +22,15 @@ import LoginPage from "./pages/Login.jsx";
 import BuySolarPreview from "./pages/BuySolarPreview.jsx";
 import BuySolar from "./pages/BuySolar.jsx";
 import Profile from "./pages/Profile.jsx";
+import Admin from "./pages/Admin.jsx";
+
+
 
 function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const userId = useSelector((state) => state.userId);
+  const sellerId = useSelector((state) => state.sellerId);
 
   
 
@@ -49,7 +52,7 @@ function App() {
       // dispatch the userId to the store
       dispatch({
         type: "USER_AUTH",
-        payload: res.data.userId,
+        payload: res.data.sellerId,
       });
 
       setUsername("");
@@ -75,7 +78,7 @@ function App() {
       // setUserId(res.data.userId)
       dispatch({
         type: "USER_AUTH",
-        payload: res.data.userId,
+        payload: res.data.sellerId,
       });
     }
   };
@@ -102,11 +105,12 @@ function App() {
 return (
   <BrowserRouter>
     <div className="App">
-      <header>
-        <nav style={{ display: "flex", justifyContent: "space-between" }}>
+     
+      <header className="app-header">
+        <nav className="nav-bar">
           <div>
             <NavLink to="/">
-              <h1>Lead SRC</h1>
+              <h3>LeadSRC.com</h3>
             </NavLink>
           </div>
           <div>
@@ -116,11 +120,11 @@ return (
             <NavLink to="/leads">Buy Leads</NavLink>
             <NavLink to="/blog">Blog</NavLink>
             <NavLink to="/contact">Contact Us</NavLink>
-            {userId ? <LogoutButton /> : <Link to="/login">Login</Link>}
+            {sellerId ? <LogoutButton /> : <Link to="/login">Login</Link>}
           </div>
         </nav>
       </header>
-      <main>
+      <main className="app-main">
         <Routes>
           <Route index element={<Home />} />
           <Route path="/solar" element={<Solar />} />
@@ -132,6 +136,7 @@ return (
           <Route path="/login" element={<LoginPage />} /> 
           <Route path="/post" element={<BuySolar />} /> 
           <Route path="/profile" element={<Profile />} /> 
+          <Route path="/admin" element={<Admin />} /> 
         </Routes>
       </main>
     </div>

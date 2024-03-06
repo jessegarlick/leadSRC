@@ -1,12 +1,18 @@
-import ContactForm from "../components/ContactForm"
+import ContactForm from "../components/ContactForm";
+import "../index.css";
 
-export default function Contact() {
-    return (
-        <div>
-            <h3>Lead SRC LLC</h3>
-            <h3>801-358-7736</h3>
-            <h3>952 E Parley Dr</h3>
-            <h3>Saratoga Springs, Utah, 84043</h3>
-        </div>
-    )
-}
+const Contact = () => {
+  return (
+    <div className="contact-container">
+      <h2 className="contact-title">Contact Information</h2>
+      <div className="contact-info">
+        <p>Lead SRC LLC</p>
+        <p>801-358-7736</p>
+        <p>952 E Parley Dr</p>
+        <p>Saratoga Springs, Utah, 84043</p>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;

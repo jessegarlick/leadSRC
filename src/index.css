@@ -1,246 +1,334 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-:root {
-  --primary: #17406a; /* Primary color, feel free to adjust */
-  --secondary: #fbfbfb; /* Secondary color, feel free to adjust */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
+/* Styling header */
+.app-header {
+  background-color: #355e3b;
+  padding: 10px 20px;
+}
+
+.app-header h1 {
   margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  margin: 0 10px;
+}
+
+.nav-bar a:hover {
+  color: #9dc183;
+}
+
+.app-main {
   padding: 20px;
-  font-family: "Poppins", sans-serif;
-  background: var(--secondary);
-  color: #010102; /* Adjusted for better readability */
+}
+
+button {
+  background-color: #2e8b57;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #266d47;
+}
+
+a {
+  color: #9dc183;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container-fluid {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.card {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-text {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.btn {
+  font-weight: bold;
+  border-radius: 25px;
+}
+
+.btn-outline-light {
+  color: #9dc183;
+  background-color: transparent;
+  border: 2px solid #9dc183;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  color: #fff;
+  background-color: #9dc183;
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+  box-sizing: border-box;
 }
 
-p {
-  margin: 20px 0;
-}
-
-button {
-  border: none;
-  padding: 8px;
-  border-radius: 4px;
-  color: #5366a3; /* Ensured consistency in color property */
-  background: var(--primary);
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3; /* Darker shade for hover effect */
-}
-
-header nav {
-  display: flex;
-  gap: 16px;
-  justify-content: end;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-header nav h1 {
-  margin-right: auto;
-  border-bottom: 3px solid var(--primary);
-}
-
-header nav a {
-  text-decoration: none;
-  padding: 6px;
-  border-radius: 4px;
-}
-
-header nav a.active {
-  background: var(--primary);
-}
-
-main {
-  max-width: 1200px;
-  margin: 40px auto;
-}
-
-.fixed-bottom {
-  position: fixed;
-  bottom: 0;
-  /* Additional styling if needed */
-}
-
-.relative-container {
-  position: relative;
-  min-height: 100vh; /* Ensures it takes minimum full height */
-}
-
-.bottom-element {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  /* Additional styling if needed */
-}
-
-.App { /* Preserved as requested */
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.full-width-form {
-  /* Styles adjusted for better form presentation */
-  background-color: rgb(3, 3, 3); /* Or any color you prefer */
+.container-fluid {
   padding: 20px;
-  z-index: 1000; /* Ensures it stays on top of other content */
-  width: 100%; /* Full width */
-  position: fixed; /* Adjusted for proper positioning */
-  bottom: 0; /* Align at the bottom */
-  left: 0; /* Align to the left */
+  background-color: #f8f9fa;
 }
 
-.buyer-form { /* Preserved as requested */
-  background-color: rgb(145, 143, 143); /* Or any color you prefer */
-  padding: 20px;
-  z-index: 1000;
-  position: relative; /* Adjusted for relative positioning */
-  width: 100%; /* Full width */
+.card {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"] {
-  color: #020202;
-  padding: 10px;
-  width: 100%;
-}
-
-.yes { /* Preserved as requested */
-  text-align: center;
-}
-
-.hyper-link:hover {
-  color: blue;
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"] {
-  text-align: right;
-  display: flex;
-}
-
-body, html {
-  width: 100%;
-  height: 100%;
-}
-
-.auth-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  right: 0;
+.card-body {
   padding: 20px;
 }
 
-.solar-section {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  color: #fff;
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
 }
 
-.solar-calculator {
-  background-color: #007bff;
+.card-text {
+  margin-bottom: 20px;
+  color: #666;
 }
 
-.solar-financing {
-  background-color: #28a745;
-}
-
-.solar-tax-credits {
-  background-color: #dc3545;
-}
-.solar-movement {
-  background-color: #040303;
-}
-
-.solar-section h1, .solar-section h2, .solar-section h3, .solar-section h4 {
-  margin-bottom: 0.5rem;
-}
-
-.solar-section p {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
+/* Additional styles for buttons, links, and the navbar from your provided CSS */
 .form-container {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+  background-color: #fff; /* White background */
+  padding: 20px; /* Padding around the form */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  max-width: 500px; /* Maximum width */
+  margin: auto; /* Center the form */
+}
+
+.buyer-form header h2 {
+  color: #355e3b; /* Green text to match the header */
+  text-align: center; /* Center the heading */
+  margin-bottom: 20px; /* Space below the heading */
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Space between form groups */
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 5px;
-  color: #050404;
+  display: block; /* Ensure the label is block-level for proper spacing */
+  margin-bottom: 5px; /* Small space between label and input */
+  color: #333; /* Dark text for readability */
+  font-weight: bold; /* Bold label text */
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group input[type="number"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.form-group input {
+  width: 100%; /* Full width */
+  padding: 10px; /* Padding inside the input */
+  border-radius: 5px; /* Rounded corners for the input */
+  border: 1px solid #ccc; /* Subtle border */
+  font-size: 16px; /* Slightly larger font size */
 }
 
 .navigation-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  display: flex; /* Align buttons in a row */
+  justify-content: space-between; /* Space out buttons */
+  margin-top: 20px; /* Space above the button group */
 }
 
-.navigation-buttons button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #6a98c6;
-  color: rgb(43, 103, 133);
-  cursor: pointer;
+.navigation-buttons .btn {
+  padding: 10px 20px; /* Padding for buttons */
+  font-size: 16px; /* Button font size */
+  color: #fff; /* White text */
+  background-color: #2e8b57; /* Green background */
+  border: none; /* No border */
+  cursor: pointer; /* Cursor indicates button */
+  border-radius: 25px; /* Rounded buttons */
 }
 
-.navigation-buttons button:hover {
-  background-color: #f4f5f6;
+.navigation-buttons .btn:hover {
+  background-color: #266d47; /* Darker green on hover */
 }
 
-.navigation-buttons button[type="submit"] {
-  background-color: #f9fcfa;
+/* Optional: Styles for when a button is disabled */
+.navigation-buttons .btn:disabled {
+  background-color: #ccc; /* Grayed out */
+  cursor: not-allowed; /* Indicate the button is not clickable */
 }
 
-.navigation-buttons button[type="submit"]:hover {
-  background-color: #f5f9f6;
+/* AdminBuyer component */
+.card {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.navigation-buttons button:first-child {
-  background-color: #fbfcfe;
-}
-
-.navigation-buttons button:first-child:hover {
-  background-color: #f8fafb;
-}
-
-.form-container > div {
+.card-body {
   padding: 20px;
-  background-color: #d4edda;
-  color: #f4f9f4;
-  border-radius: 4px;
-  border: 1px solid #c3e6cb;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-text p {
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.btn {
+  font-weight: bold;
+  border-radius: 25px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Form input styling */
+.form-control {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+/* Add this CSS to your index.css file or any other CSS file you are using */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Center text horizontally */
+}
+
+.btn-group {
+  margin-top: 20px; /* Adjust this value as needed */
+}
+
+.process-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.process-title {
+  color: #333; /* Example color */
+  font-size: 2rem; /* Example font size */
+}
+
+.process-description {
+  margin-top: 20px;
+  border: 2px solid #ccc; /* Border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow */
+  padding: 20px;
+  text-align: left;
+}
+
+.process-description p {
+  font-size: 1.2rem; /* Example font size */
+  color: #666; /* Example color */
+}
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 50px; /* Adjust margin as needed */
+}
+
+.contact-title {
+  color: #333; /* Example color */
+  font-size: 2rem; /* Example font size */
+}
+
+.contact-info {
+  margin-top: 20px; /* Adjust margin as needed */
+  border: 2px solid #ccc; /* Border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow */
+  padding: 20px;
+}
+
+.contact-info p {
+  font-size: 1.2rem; /* Example font size */
+  color: #666; /* Example color */
+}
+.hyper-link {
+  color: blue; /* Set the default text color */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.hyper-link:hover {
+  color: darkblue; /* Change text color on hover */
 }
