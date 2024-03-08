@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import "../index.css";
 
 function ContactForm() {
@@ -10,7 +9,7 @@ function ContactForm() {
     const [phone, setPhone] = useState('');
     const [company, setCompany] = useState('');
     const [sent, setSent] = useState(false);
-    const navigate = useNavigate();
+   
     
     const handleSubmit = async (event) => {
         event.preventDefault();

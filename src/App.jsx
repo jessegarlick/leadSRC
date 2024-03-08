@@ -23,7 +23,7 @@ import BuySolarPreview from "./pages/BuySolarPreview.jsx";
 import BuySolar from "./pages/BuySolar.jsx";
 import Profile from "./pages/Profile.jsx";
 import Admin from "./pages/Admin.jsx";
-
+import LogoutButton from "./pages/Logout.jsx"
 
 
 function App() {
@@ -60,17 +60,18 @@ function App() {
     }
     alert(res.data.message);
   };
-  const handleLogout = async () => {
-    const res = await axios.get("/api/logout");
 
-    if (res.data.success) {
-      // setUserId(null)
-      dispatch({
-        type: "LOGOUT",
-      });
-    }
+  // const handleLogout = async () => {
+  //   const res = await axios.get("/api/logout");
+
+  //   if (res.data.success) {
+  //     // setUserId(null)
+  //     dispatch({
+  //       type: "LOGOUT",
+  //     });
+  //   }
   
-  };
+  // };
 
   const sessionCheck = async () => {
     const res = await axios.get("/api/session-check");
@@ -78,29 +79,30 @@ function App() {
       // setUserId(res.data.userId)
       dispatch({
         type: "USER_AUTH",
-        payload: res.data.sellerId,
+        payload: { sellerId: res.data.seller.sellerId, username: res.data.seller.username },
       });
     }
   };
+
   useEffect(() => {
     sessionCheck();
   }, []);
 
-  const LogoutButton = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const handleLogout = async () => {
-      const res = await axios.get("/api/logout");
-      if (res.data.success) {
-        dispatch({ type: "LOGOUT" });
-        navigate('/');
-      }
-    };
+  // const LogoutButton = () => {
+  //   const navigate = useNavigate();
+  //   const dispatch = useDispatch();
+  //   const handleLogout = async () => {
+  //     const res = await axios.get("/api/logout");
+  //     if (res.data.success) {
+  //       dispatch({ type: "LOGOUT" });
+  //       navigate('/');
+  //     }
+  //   };
   
-    return (
-      <button onClick={handleLogout}>Logout</button>
-    );
-  };
+  //   return (
+  //     <button onClick={handleLogout}>Logout</button>
+  //   );
+  // };
 
 return (
   <BrowserRouter>
@@ -110,7 +112,7 @@ return (
         <nav className="nav-bar">
           <div>
             <NavLink to="/">
-              <h3>LeadSRC.com</h3>
+              <h3>LeadSRC</h3>
             </NavLink>
           </div>
           <div>
@@ -120,7 +122,12 @@ return (
             <NavLink to="/leads">Buy Leads</NavLink>
             <NavLink to="/blog">Blog</NavLink>
             <NavLink to="/contact">Contact Us</NavLink>
-            {sellerId ? <LogoutButton /> : <Link to="/login">Login</Link>}
+            {sellerId ? (
+              <>
+              <NavLink to="/profile">Profile</NavLink>
+              <LogoutButton />
+              </>
+            ) : <Link to="/login">Login</Link>}
           </div>
         </nav>
       </header>

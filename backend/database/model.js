@@ -17,10 +17,7 @@ Buyer.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    // dateCreated: {
-    //    type: DataTypes.DATE,
-    //     allowNull: false,
-    // },
+
     fname: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -94,9 +91,6 @@ Seller.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    userId: {
-      type: DataTypes.INTEGER,
-    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -127,16 +121,18 @@ Seller.init(
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
-      default: false,
+      allowNull: false,
+      defaultValue: false,
     },
     isClient: {
       type: DataTypes.BOOLEAN,
       default: false,
-    }
+    },
   },
   {
-    modelName: "seller",
     sequelize: db,
+    modelName: "seller",
+    tableName: "sellers", // Explicit table name
     timestamps: true,
   }
 );
@@ -147,11 +143,46 @@ export class Message extends Model {
   }
 }
 
+Message.init(
+  {
+    messageId: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    senderId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: "sellers", key: "sellerId" }, // Changed "seller" to "sellers"
+    },
+    receiverId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: "sellers", key: "sellerId" }, // Changed "seller" to "sellers"
+    },
+    content: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    isRead: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+  },
+  {
+    modelName: "message",
+    sequelize: db,
+    timestamps: true,
+  }
+);
+
+
 Seller.hasMany(Buyer, { foreignKey: "sellerId" });
 Buyer.belongsTo(Seller, { foreignKey: "sellerId" });
 
-// if (process.argv[1] === url.fileURLToPath(import.meta.url)) {
-//   console.log('Syncing database...');
-//   await db.sync({force: true})
-//   console.log('Finished syncing database!');
-// }
+Seller.hasMany(Message, { as: "SentMessages", foreignKey: "senderId" });
+Seller.hasMany(Message, { as: "ReceivedMessages", foreignKey: "receiverId" });
+Message.belongsTo(Seller, { as: "Sender", foreignKey: "senderId" });
+Message.belongsTo(Seller, { as: "Receiver", foreignKey: "receiverId" });
+

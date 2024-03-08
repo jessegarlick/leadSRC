@@ -1,0 +1,106 @@
+/* Reset margins and paddings for a consistent layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Container for the whole page, provides padding and a light background */
+  .container-fluid {
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  /* Card styling for each buyer, includes shadow and margin for separation */
+  .card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+  
+  /* Styling for the content inside each card */
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .card-text {
+    color: #666;
+    margin-bottom: 5px;
+    line-height: 1.5;
+  }
+  
+  /* Styling for the form container, centralizing it */
+  .form-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Input and label styling */
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Button styling for actions like submitting the form */
+  .btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Navigation buttons container */
+  .navigation-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* General styling for headers and welcome message */
+  .app-header {
+    font-size: 24px;
+    text-align: center;
+    color: #355e3b;
+    margin-bottom: 20px;
+  }
+  
+  /* Enhances the appearance of buyers-container */
+  .buyers-container {
+    margin-bottom: 20px;
+  }
+  
+  /* Focus effect for inputs */
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  }
+  

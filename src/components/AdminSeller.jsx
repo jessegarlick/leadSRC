@@ -10,18 +10,23 @@ function AdminSeller({ seller, onDelete }) {
   };
   
   const deleteSeller = async () => {
-   
+    try {
       await axios.delete(`/api/seller/delete/${seller.sellerId}`);
       alert("Seller deleted successfully");
       onDelete(seller.sellerId);
-      };
+    } catch (error) {
+      console.error("Failed to delete seller:", error);
+    }
+  };
 
   const updateSeller = async () => {
-     await axios.put(`/api/seller/update/${seller.sellerId}`, editData);
+    try {
+      await axios.put(`/api/seller/update/${seller.sellerId}`, editData);
       setIsEditing(false);
-      
+    } catch (error) {
+      console.error("Failed to update seller:", error);
     }
-  
+  };
 
   return (
     <div className="card mb-3">
