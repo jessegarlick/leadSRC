@@ -1,0 +1,16 @@
+.nav-link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8); /* Set the color with transparency */
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    margin: 0 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .nav-link:hover {
+    color: #030303;
+  }
+  

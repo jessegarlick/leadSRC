@@ -1,0 +1,82 @@
+
+.process-container {
+    margin: 0 auto; 
+    max-width: 1100px; 
+    padding: 20px; 
+    border: 2px solid #ccc; 
+    border-radius: 10px; 
+    background-color: rgba(0, 0, 0, 0.7); 
+
+}
+
+
+.process-title {
+    font-size: 2rem; 
+    font-weight: bold;
+    color: #fefcfc; 
+    margin-bottom: 0.5rem; 
+    text-align: center;  
+    font-family: Courier New, monospace;
+
+
+}
+
+.author {
+    font-size: 1.3rem; 
+    font-weight: bold;
+    color: #fefcfc; 
+    margin-bottom: 0.5rem; 
+    text-align: center;  
+    font-family: Courier New, monospace;
+}
+.process-description {
+    font-size: 1.1rem; 
+    margin-bottom: 1rem; 
+    color: white;
+    font-family: Courier New, monospace;
+    line-height: 200%;
+
+}
+.founder-container {
+    text-align: center; 
+  }
+  
+  .founder-image {
+    max-width: 40%;
+    height: auto; 
+    display: block;
+    margin: 0 auto; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  .founder-description {
+    color: #ffffff; 
+    font-size: 1.1rem;
+    max-width: 800px; 
+    margin: 2px auto;
+    padding: 2px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    text-align: justify;
+    font-family: Courier New, monospace;
+    line-height: 180%;
+  
+  }
+  
+  .hyper-link {
+    color: rgb(188, 222, 177);
+    cursor: pointer;
+  }
+  
+ .hyper-link:hover {
+    color: #266d47;
+
+ }
+
+ .contact-description {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-family: Courier New, monospace;
+
+ }

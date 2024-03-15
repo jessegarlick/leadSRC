@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import "../index.css";
-import "./project.css";
 import { CSVLink } from "react-csv";
+import "./css/profile.css"
 
 function Profile() {
   const sellerId = useSelector((state) => state.sellerId);
@@ -13,6 +12,7 @@ function Profile() {
   const [password, setPassword] = useState("");
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [messageToDelete, setMessageToDelete] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,11 +26,9 @@ function Profile() {
           );
           setBuyers(buyersResponse.data);
 
-          // Fetch messages for the seller
           const messagesResponse = await axios.get(
             `/api/messages?sellerId=${sellerId}`
           );
-          console.log(messagesResponse.data);
           setMessages(messagesResponse.data);
         } catch (error) {
           console.error("Failed to fetch data:", error);
@@ -39,7 +37,7 @@ function Profile() {
     };
 
     fetchData();
-  }, [sellerId]);
+  }, [sellerId, messageToDelete]);
 
   const handleUpdateCredentials = async (e) => {
     e.preventDefault();
@@ -61,80 +59,120 @@ function Profile() {
     try {
       await axios.post("/api/message/send", {
         senderId: sellerId,
-        receiverId: 1, // Assuming admin's receiverId is fixed or known
+        receiverId: 2,
         messageContent: newMessage,
       });
       setNewMessage("");
-      // Refresh messages list after sending a message
-      const messagesResponse = await axios.post(
+      const messagesResponse = await axios.get(
         `/api/messages?sellerId=${sellerId}`
       );
-      setMessages(messagesResponse.data.data);
+      setMessages(messagesResponse.data);
     } catch (error) {
       console.error("Failed to send message", error);
       alert("Failed to send message");
     }
   };
 
+  const handleDeleteMessage = async (messageId) => {
+    try {
+      await axios.delete(`/api/message/${messageId}`);
+
+      setMessages(messages.filter((msg) => msg.messageId !== messageId));
+    } catch (error) {
+      console.error("Failed to delete message", error);
+      alert("Failed to delete message");
+    }
+  };
+
   return (
-    <div className="process-container">
-      <h1>Welcome {seller.firstName}</h1>
-      <div>
-        {/* Display received messages */}
-        {messages && messages.map((msg, index) => {
-  // Check if the message is sent by the admin (senderId = 1)
-  if (msg.senderId === 1) {
-    return <p key={index}>{msg.content}</p>;
-  } else {
-    return null; // Skip rendering for non-admin messages
-  }
-})}
+    <div className="profile-message-container">
+      <div className="profile-header">
+        <h1 className="profile-title">Welcome {seller.firstName}</h1>
       </div>
-      {/* Form for sending messages */}
+      <div>
+        {/* Display buyers */}
+        {buyers.map((buyer) => (
+          <div key={buyer.buyerId} className="buyer-card">
+            <h3>Solar Lead:</h3>
+            <p>First Name: {buyer.fname}</p>
+            <p>Last Name: {buyer.lname}</p>
+            <p>
+              Address: {buyer.streetAddress}, {buyer.city}, {buyer.state}, {buyer.zip}
+            </p>
+            <p>
+              Phones: {buyer.cellPhone}, {buyer.homePhone}
+            </p>
+            <p>Email: {buyer.email}</p>
+            <p>Homeowner: {buyer.homeowner ? "Yes" : "No"}</p>
+            <p>Shade: {buyer.shade}</p>
+            <p>Monthly Rate: {buyer.monthlyRate}</p>
+            <p>Credit Score: {buyer.creditScore}</p>
+          </div>
+        ))}
+      </div>
+      <div className="profile-button-container">
+        {messages
+          .filter((msg) => msg.senderId === 1 && msg.receiverId === 2)
+          .map((msg, index) => (
+            <div key={index} className="profile-message-container">
+              <p>Message: {msg.content}</p>
+              <button
+                className="btn-primary"
+                type="button"
+                onClick={() => handleDeleteMessage(msg.messageId)}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+      </div>
       <form
+        className="profile-message-form"
         onSubmit={(e) => {
           e.preventDefault();
           handleSendMessage();
         }}
       >
+        <h2>Message Admin:</h2>
         <textarea
+          className="form-control"
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           placeholder="Type your message here"
         ></textarea>
-        <button type="submit">Send</button>
+        <button className="btn-primary" type="submit">
+          Send
+        </button>
       </form>
-      <div>
-        {/* Rest of the profile content */}
-        {buyers.map((buyer) => (
-          <div key={buyer.buyerId} className="card">
-            <div className="card-body">
-              <p className="card-title">
-                {buyer.fname} {buyer.lname}
-              </p>
-              <p className="card-text">
-                Address: {buyer.streetAddress}, {buyer.city}, {buyer.state},{" "}
-                {buyer.zip}
-              </p>
-              <p className="card-text">
-                Phones: {buyer.cellPhone}, {buyer.homePhone}
-              </p>
-              <p className="card-text">Email: {buyer.email}</p>
-              <p className="card-text">
-                Homeowner: {buyer.homeowner ? "Yes" : "No"}
-              </p>
-              <p className="card-text">Shade: {buyer.shade}</p>
-              <p className="card-text">Monthly Rate: {buyer.monthlyRate}</p>
-              <p className="card-text">Credit Score: {buyer.creditScore}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <form onSubmit={handleUpdateCredentials} className="form-container">
-        {/* Update credentials form */}
+
+      <form className="profile-credentials-form">
+        <label>
+          Username:
+          <input
+            className="form-control"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <label>
+          Password:
+          <input
+            className="form-control"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <button
+          className="btn-primary"
+          type="submit"
+          onClick={handleUpdateCredentials}
+        >
+          Update Credentials
+        </button>
       </form>
-      {/* Export to CSV button */}
-      <CSVLink data={buyers} filename="../assets/buyers.csv">
+      <CSVLink data={buyers} filename="buyers.csv" className="btn-primary">
         Export to CSV
       </CSVLink>
     </div>

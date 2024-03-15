@@ -1,0 +1,88 @@
+/* Profile Page Container and General Layout Adjustments */
+.profile-message-container {
+    display: left;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1); 
+    padding: 50px;
+    border-radius: 10px;
+    width: 95%;
+    max-width: 1300px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.profile-header {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.profile-title {
+    margin-bottom: 20px;
+    color: #333; 
+    font-size: 2.2rem; 
+}
+
+/* Form and Input Controls Styling */
+.profile-message-form, .profile-credentials-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 90%;
+    margin: 0 auto 20px;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #b2b2b2; 
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06); 
+}
+
+/* Button Styling for Enhanced Aesthetics */
+.btn, .btn-primary, .btn-export {
+    margin: 5px 10px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.btn-primary {
+    background-color: #266d47;
+    color: #c9e5b8;
+}
+
+.btn-primary:hover {
+    background-color: #060706; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.btn-export {
+    background-color: #266d47;
+    color: #c9e5b8;
+}
+
+.btn-export:hover {
+    background-color: #050504; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .btn-container {
+        flex-direction: column;
+    }
+
+    .btn, .btn-primary, .btn-export {
+        width: 80%;
+        margin: 10px auto;
+    }
+}

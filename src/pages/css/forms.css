@@ -1,0 +1,58 @@
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; 
+}
+
+.buyer-form header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fefcfc; 
+    font-family: Courier New, monospace;
+    
+}
+
+.buyer-form header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-family: Courier, monospace;
+
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fdfafa; 
+}
+
+.form-group input {
+    width: calc(100% - 24px);
+    padding: 12px;
+    font-size: 16px;
+}
+
+
+
+
+.navigation-buttons button {
+    margin-top: auto; 
+    background-color: #266d47;
+    color: #c9e5b8;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navigation-buttons button:hover {
+    background-color: #010101;
+  }
+  

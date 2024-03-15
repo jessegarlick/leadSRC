@@ -201,7 +201,7 @@ const handlerFunctions = {
     });
   },
   getProfile: async (req, res) => {
-    const sellerId = req.query.sellerId; // Assuming you're passing sellerId as a query parameter
+    const sellerId = req.query.sellerId; 
 
     try {
       const buyersWithSellers = await Buyer.findAll({
@@ -270,7 +270,6 @@ const handlerFunctions = {
     }
   },
 
-  // Update Seller
   updateSeller: async (req, res) => {
     const { sellerId } = req.params;
     const updatedData = req.body;
@@ -309,7 +308,6 @@ const handlerFunctions = {
       res.status(500).send({ message: "Error fetching seller information" });
     }
   },
-  // Update Seller's Username and Password
   updateSellerCredentials: async (req, res) => {
     const { sellerId } = req.params;
     const { username, password } = req.body;
@@ -330,31 +328,30 @@ const handlerFunctions = {
       res.status(500).json({ message: "Error updating seller's credentials" });
     }
   },
-  // Add to your handlerFunctions in controller.js
-
   sendMessage: async (req, res) => {
-    console.log(req.body); // Logging the request body for debugging purposes
+    console.log("Request Body:", req.body); 
     const { senderId, receiverId, messageContent } = req.body;
-  
+
     try {
-      // Create a new message in the database
-      const message = await Message.create({
-        senderId,
-        receiverId,
-        messageContent,
-      });
-  
-      // Respond with a success message and the created message data
-      res.json({
-        message: "Message sent successfully",
-        data: message,
-      });
+        console.log(`Attempting to create message with senderId: ${senderId} receiverId: ${receiverId}`);
+        const message = await Message.create({
+            senderId,
+            receiverId,
+            content: messageContent, 
+        });
+
+        res.json({
+            message: "Message sent successfully",
+            data: message,
+        });
     } catch (error) {
-      // If an error occurs during message creation, respond with an error message
-      res.status(500).json({ message: "Failed to send message", error: error.message });
+        console.error("Error creating message:", error); 
+        res.status(500).json({ message: "Failed to send message", error: error.message });
     }
-  },
-  
+},
+
+
+
 
 readMessage: async (req, res) => {
   const { messageId } = req.params;
@@ -376,7 +373,7 @@ readMessage: async (req, res) => {
 
 getMessages: async (req, res) => {
   console.log(req.query);
-  const { sellerId } = req.query; // Assuming you want to fetch messages for a specific user
+  const { sellerId } = req.query; 
 
   try {
     const messages = await Message.findAll({
@@ -393,7 +390,31 @@ getMessages: async (req, res) => {
     console.error("Error fetching messages:", error);
     res.status(500).json({ error: "Failed to fetch messages" });
   }
-}
+},
+deleteMessage: async (req, res) => {
+  const { messageId } = req.params;
+
+  try {
+    const deletedMessageCount = await Message.destroy({
+      where: {
+        messageId: messageId
+      }
+    });
+
+    if (deletedMessageCount === 0) {
+      return res.status(404).json({ message: "Message not found" });
+    }
+
+    console.log(`Deleted ${deletedMessageCount} message(s).`);
+    res.json({ message: "Message deleted successfully" });
+  } catch (error) {
+    console.error("Failed to delete message:", error);
+    res.status(500).json({ message: "Error deleting message" });
+  }
+},
+
+
+
 };
 
 

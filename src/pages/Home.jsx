@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../index.css"; 
+import "./css/home.css"; 
 import sunGreenMountainsImage from "../images/sun_green_mountains_image.jpeg"; 
 
 

@@ -1,9 +1,10 @@
-import BuyerForm from "../components/BuyerForm";
+import BuyerForm from "./components/BuyerForm";
 
 function BuySolar() {
   return (
     <div className="process-container">
       <h1 className="process-title">Buying solar panels in 2024: The complete guide</h1>
+      <h3 className="author">By Jesse Garlick  March 12, 2024</h3>
       <div className="process-description">
       <p>
           Rooftop solar panels have transitioned from being considered luxury

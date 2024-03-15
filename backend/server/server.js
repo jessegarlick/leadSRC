@@ -1,7 +1,6 @@
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
-import { Sequelize } from "sequelize";
 import cors from "cors";
 import ViteExpress from "vite-express";
 import handlerFunctions from "./controller.js";
@@ -28,8 +27,8 @@ app.post("/api/login", handlerFunctions.login);
 app.get("/api/logout", handlerFunctions.logout);
 app.get("/api/seller", handlerFunctions.getSellers);
 app.get("/api/buyer", handlerFunctions.getBuyers);
-app.delete("/api/buyer/:buyerId", handlerFunctions.deleteBuyer);
-app.delete("/api/seller/:sellerId", handlerFunctions.deleteSeller);
+app.delete("/api/buyer/delete/:buyerId", handlerFunctions.deleteBuyer);
+app.delete("/api/seller/delete/:sellerId", handlerFunctions.deleteSeller);
 app.put("/api/buyer/update/:buyerId", handlerFunctions.updateBuyer);
 app.put("/api/seller/update/:sellerId", handlerFunctions.updateSeller);
 app.post("/api/assignBuyer", handlerFunctions.assignBuyer);
@@ -39,6 +38,7 @@ app.put("/api/seller/update-credentials/:sellerId", handlerFunctions.updateSelle
 app.post("/api/message/send", handlerFunctions.sendMessage);
 app.put("/api/message/read/:messageId", handlerFunctions.readMessage);
 app.get("/api/messages", handlerFunctions.getMessages);
+app.delete("/api/message/:messageId", handlerFunctions.deleteMessage);
 
 // Run the server
 ViteExpress.listen(app, 9122, () => {

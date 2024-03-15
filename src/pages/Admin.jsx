@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import AdminBuyer from "../components/AdminBuyer";
-import AdminSeller from "../components/AdminSeller";
+import AdminBuyer from "./components/AdminBuyer";
+import AdminSeller from "./components/AdminSeller";
+import "./css/admin.css"; 
 
 function Admin() {
   const [buyers, setBuyers] = useState([]);
@@ -10,11 +11,12 @@ function Admin() {
   const [showBuyer, setShowBuyer] = useState(false);
   const [selectedSeller, setSelectedSeller] = useState("");
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
+  const [newMessage, setNewMessage] = useState(null);
+  const [messageToDelete, setMessageToDelete] = useState(null);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [messageToDelete]);
 
   const fetchData = async () => {
     try {
@@ -24,12 +26,8 @@ function Admin() {
       const buyersResponse = await axios.get("/api/buyer");
       setBuyers(buyersResponse.data.buyers);
 
-      // Fetch messages for the selected seller
       if (selectedSeller) {
-        const messagesResponse = await axios.get(
-          `/api/messages?sellerId=${selectedSeller}`
-        );
-        setMessages(messagesResponse.data);
+        fetchMessages(selectedSeller);
       }
     } catch (error) {
       console.error("Failed to fetch data:", error);
@@ -75,52 +73,72 @@ function Admin() {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
+    if (!newMessage.trim()) {
+      console.error("Message content cannot be empty");
+      return;
+    }
     try {
       await axios.post("/api/message/send", {
-        senderId: "sellerId",
+        senderId: 1, 
         receiverId: selectedSeller,
         messageContent: newMessage,
       });
       setNewMessage("");
+      
       fetchMessages(selectedSeller);
     } catch (error) {
       console.error("Failed to send message", error);
     }
   };
 
-  const handleSelectSeller = (e) => {
+  const handleSelectSeller = async (e) => {
     const selectedSellerId = e.target.value;
-    console.log("Selected Seller ID:", selectedSellerId); // Add this line
+    console.log("Selected Seller ID:", selectedSellerId);
     setSelectedSeller(selectedSellerId);
     if (selectedSellerId) {
-      fetchMessages(selectedSellerId);
+      try {
+        const messagesResponse = await axios.get(
+          `/api/messages?sellerId=${selectedSellerId}`
+        );
+        setMessages(messagesResponse.data);
+      } catch (error) {
+        console.error("Failed to fetch messages:", error);
+      }
     } else {
       setMessages([]);
     }
   };
+  const handleDeleteMessage = async (messageId) => {
+    console.log("Deleting message with ID:", messageId);
+    try {
+      await axios.delete(`/api/message/${messageId}`);
+      setMessages(messages.filter((msg) => msg.messageId !== messageId));
+    } catch (error) {
+      console.error("Failed to delete message", error);
+      alert("Failed to delete message");
+    }
+  };
 
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col">
-          <h1 className="text-center">***Admin Page***</h1>
+    <div className="admin-container">
+      <div>
+        <div className="admin-header">
+          <h1 className="admin-title">ADMIN</h1>
           <div
-            className="btn-group d-flex justify-content-center"
+            className="button-container"
             role="group"
             aria-label="Admin tabs"
           >
             <button
               type="button"
-              className={`btn btn-outline-primary ${showBuyer ? "active" : ""}`}
+              className={`btn-outline-primary ${showBuyer ? "active" : ""}`}
               onClick={displayBuyers}
             >
               Show Buyers
             </button>
             <button
               type="button"
-              className={`btn btn-outline-primary ${
-                showSeller ? "active" : ""
-              }`}
+              className={`btn-outline-primary ${showSeller ? "active" : ""}`}
               onClick={displaySellers}
             >
               Show Sellers
@@ -128,7 +146,7 @@ function Admin() {
           </div>
         </div>
       </div>
-      <div className="row mt-3">
+      <div className="row">
         <div className="col">
           {showSeller && (
             <div className="admin-section">
@@ -158,9 +176,13 @@ function Admin() {
             </div>
           )}
         </div>
-        <div className="col">
-          <h2>Messages</h2>
-          <select value={selectedSeller} onChange={handleSelectSeller}>
+        <div className="col-content">
+          <h2 className="admin-title">Messages</h2>
+          <select
+            className="form-control"
+            value={selectedSeller}
+            onChange={handleSelectSeller}
+          >
             <option value="">Select a seller</option>
             {sellers.map((seller, index) => (
               <option key={index} value={seller.sellerId}>
@@ -168,24 +190,40 @@ function Admin() {
               </option>
             ))}
           </select>
-          <div>
-            {/* Display received messages */}
+          <div className="admin-message-container">
+            {/* display received messages */}
             {messages &&
               messages.map((msg, index) => {
-                // Check if the message is sent by the selected seller (senderId equals selectedSeller)
-                if (msg.senderId === parseInt(selectedSeller)) {
-                  return <p key={index}>{msg.content}</p>;
+                if (msg.senderId.toString() === selectedSeller.toString()) {
+                  return (
+                    <div key={index} className="message-container">
+                      <p>Message: {msg.content}</p>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => handleDeleteMessage(msg.messageId)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  );
                 } else {
-                  return null; // Skip rendering for messages from other sellers
+                  return null;
                 }
               })}
+
             <form onSubmit={handleSendMessage}>
-              <textarea
-                value={newMessage}
+              <input
+                type="text"
+                className="form-control"
+                name="messageContent"
+                id="messageContent"
+                value={newMessage || ""}
                 onChange={(e) => setNewMessage(e.target.value)}
                 placeholder="Type your message here"
-              ></textarea>
-              <button type="submit">Send</button>
+              />
+              <button type="submit" className="btn btn-primary">
+                Send Message
+              </button>
             </form>
           </div>
         </div>

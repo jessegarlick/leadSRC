@@ -124,15 +124,12 @@ Seller.init(
       allowNull: false,
       defaultValue: false,
     },
-    isClient: {
-      type: DataTypes.BOOLEAN,
-      default: false,
-    },
+    
   },
   {
     sequelize: db,
     modelName: "seller",
-    tableName: "sellers", // Explicit table name
+    tableName: "sellers",
     timestamps: true,
   }
 );
@@ -142,7 +139,6 @@ export class Message extends Model {
     return this.toJSON();
   }
 }
-
 Message.init(
   {
     messageId: {
@@ -153,12 +149,12 @@ Message.init(
     senderId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "sellers", key: "sellerId" }, // Changed "seller" to "sellers"
+      references: { model: Seller, key: "seller_id" }, 
     },
     receiverId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "sellers", key: "sellerId" }, // Changed "seller" to "sellers"
+      references: { model: Seller, key: "seller_id" }, 
     },
     content: {
       type: DataTypes.TEXT,
@@ -175,6 +171,10 @@ Message.init(
     sequelize: db,
     timestamps: true,
   }
+
+
+
+
 );
 
 

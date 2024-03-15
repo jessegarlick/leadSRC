@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "../index.css"; 
+import "./css/forms.css"; 
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");

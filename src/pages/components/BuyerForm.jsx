@@ -1,29 +1,27 @@
 
 import React, { useState } from 'react';
 import axios from 'axios'
-import "../index.css";
-
-
+import "../css/forms.css";
 
 
 
 
 function BuyerForm() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [firstName, setFirstName] = useState('test');
-  const [lastName, setLastName] = useState('test');
-  const [email, setEmail] = useState('test');
-  const [phone, setPhone] = useState('test');
-  const [homePhone, setHomePhone] = useState('test');
-  const [homeowner, setHomeowner] = useState('test');
-  const [streetAddress, setStreetAddress] = useState('test');
+  const [firstName, setFirstName] = useState('Jesse');
+  const [lastName, setLastName] = useState('Garlick');
+  const [email, setEmail] = useState('jessegarlick11@gmail.com');
+  const [phone, setPhone] = useState('801-358-7736');
+  const [homePhone, setHomePhone] = useState('none');
+  const [homeowner, setHomeowner] = useState('YES');
+  const [streetAddress, setStreetAddress] = useState('952 E Parley Dr');
   
-  const [city, setCity] = useState('test');
-  const [state, setState] = useState('test');
-  const [zip, setZip] = useState('test');
-  const [monthlyRate, setMonthlyRate] = useState('test');
-  const [shade, setShade] = useState('test');
-  const [creditScore, setCreditScore] = useState('test');
+  const [city, setCity] = useState('Saratoga Springs');
+  const [state, setState] = useState('UT');
+  const [zip, setZip] = useState('84045');
+  const [monthlyRate, setMonthlyRate] = useState('$154');
+  const [shade, setShade] = useState('No');
+  const [creditScore, setCreditScore] = useState('Yes');
 
   const [sent, setSent] = useState(false)
   
@@ -41,7 +39,7 @@ function BuyerForm() {
     { label: "Zip Code", type: "text", name: "zip", placeholder: "Zip Code", value: zip, setter: setZip },
     { label: "What is your monthly energy rate?", type: "text", name: "monthlyRate", placeholder: "Energy Rate", value: monthlyRate, setter: setMonthlyRate },
     { label: "Do you have shade?", type: "text", name: "shade", placeholder: "Shade", value: shade, setter: setShade },
-    { label: "Is your credit score above 640?", type: "text", name: "creditScore", placeholder: "Credit Score", value: creditScore, setter: setCreditScore },
+    { label: "Do you consent to be contacted?", type: "text", name: "creditScore", placeholder: "Credit Score", value: creditScore, setter: setCreditScore },
   ];
 
   const handleNext = () => {

@@ -5,7 +5,6 @@ await db.sync({ force: true });
 
 console.log('Seeding database...');
 
-// Seeding sellers
 const sellers = [
     {
         firstName: 'Jesse',
@@ -29,7 +28,6 @@ const sellers = [
     },
 ];
 
-// Seeding buyers
 const buyers = [
     {
         fname: 'John',
@@ -45,7 +43,7 @@ const buyers = [
         shade: 'Some',
         monthlyRate: '$100',
         creditScore: 'Good',
-        sellerId: 1, // Assuming the sellerId matches the first seller
+        sellerId: 1, 
     },
     {
         fname: 'Jane',
@@ -61,38 +59,35 @@ const buyers = [
         shade: 'Little',
         monthlyRate: '$120',
         creditScore: 'Excellent',
-        sellerId: 2, // Assuming the sellerId matches the second seller
+        sellerId: 2,
     },
 ];
 
 // Seeding messages
 const messages = [
     {
-        senderId: 1, // Assuming the senderId matches the first seller
-        receiverId: 2, // Assuming the receiverId matches the second seller
+        senderId: 1, 
+        receiverId: 2,
         content: 'Hello, Sean! How are you?',
         isRead: false,
     },
     {
-        senderId: 2, // Assuming the senderId matches the second seller
-        receiverId: 1, // Assuming the receiverId matches the first seller
+        senderId: 2,
+        receiverId: 1, 
         content: 'Hi Jesse! I\'m good, thanks. How about you?',
         isRead: false,
     },
 ];
 
 try {
-    // Seed sellers
     for (const seller of sellers) {
         await Seller.create(seller);
     }
 
-    // Seed buyers
     for (const buyer of buyers) {
         await Buyer.create(buyer);
     }
 
-    // Seed messages
     for (const message of messages) {
         await Message.create(message);
     }

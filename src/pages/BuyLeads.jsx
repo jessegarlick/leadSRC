@@ -1,5 +1,4 @@
-import ContactForm from "../components/ContactForm"
-import "../index.css";
+import ContactForm from "./components/ContactForm"
 
 
 export default function BuyLeads() {

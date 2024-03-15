@@ -200,7 +200,7 @@ function AdminBuyer({ buyer, sellers, onDelete }) {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="seller">Assign Seller</label>
+              
               <select
                 id="seller"
                 name="seller"
@@ -244,7 +244,7 @@ function AdminBuyer({ buyer, sellers, onDelete }) {
             <p>Shade: {buyer.shade}</p>
             <p>Monthly Rate: {buyer.monthlyRate}</p>
             <p>Credit Score: {buyer.creditScore}</p>
-            <p>Assigned Seller: {buyer.sellerName}</p>
+            <p> {buyer.sellerName}</p>
             <div className="d-flex justify-content-between mt-3">
               <button
                 onClick={() => setIsEditing(true)}

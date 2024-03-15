@@ -1,15 +1,25 @@
-import ContactForm from "../components/ContactForm";
-import "../index.css";
+import ContactForm from "./components/ContactForm";
+import "./css/process.css";
 
 const Contact = () => {
   return (
-    <div className="contact-container">
-      <h2 className="contact-title">Contact Information</h2>
-      <div className="contact-info">
+    <div className="process-container">
+      <h2 className="process-title">Contact Information</h2>
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <div className="contact-description">
         <p>Lead SRC LLC</p>
         <p>801-358-7736</p>
         <p>952 E Parley Dr</p>
-        <p>Saratoga Springs, Utah, 84043</p>
+        <p>Saratoga Springs, Utah, 84045</p>
+        <br />
+        <br />
+        <br />
+        <br />
+       
       </div>
     </div>
   );

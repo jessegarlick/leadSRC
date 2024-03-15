@@ -1,0 +1,234 @@
+/* Admin Page Styles */
+
+.admin-container {
+    display: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255); 
+    padding: 50px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1300px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); 
+}
+
+.admin-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.admin-section {
+    color: #080808;
+    width: 100%; 
+    margin: 0 auto; 
+    padding: 20px; 
+    border-radius: 10px; 
+    text-align: left;
+}
+
+
+.admin-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem; 
+}
+
+
+.admin-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    margin-bottom: 20px; 
+  }
+  
+  .admin-header h1 {
+    margin: 0;
+    font-size: 48px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .admin-message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+  
+  .admin-message-container p {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+  
+  .admin-message-container button {
+    margin-top: 10px;
+  }
+  
+  
+  .admin-header .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+.button-container {
+    text-align: center;
+    margin-top: 20px; 
+}
+.btn-group {
+    margin-top: 20px; 
+  }
+.btn-outline-primary {
+    background-color: #266d47;
+    color: #c9e5b8;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #010101;
+    color: #c9e5b8;
+}
+.btn {
+    padding: 12px 24px;
+    border-radius: 5px;
+    background-color: #266d47;
+    color: #c9e5b8;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn:hover {
+    background-color: #010101;
+    
+}
+
+
+
+.btn:active {
+    transform: scale(0.95); 
+}
+.select-seller {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.select-seller option {
+    font-size: 1rem;
+}
+
+/* Form Styles */
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(247, 243, 243, 0); 
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buyer-form header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fefcfc; 
+}
+
+.buyer-form header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fdfafa;
+}
+
+.form-group input {
+     
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease; 
+}
+
+.form-group input:focus {
+    border-color: #2e8b57; 
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/* Form Control Styles */
+.form-control {
+    
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease; 
+}
+
+.form-control:focus {
+    border-color: #2e8b57; 
+}
+
+.form-control:disabled {
+    background-color: #f0f0f0; 
+    cursor: not-allowed; 
+}
+.message-container {
+    margin-bottom: 20px; 
+}
+
+.message-container p {
+    margin-bottom: 10px; 
+    padding: 10px; 
+    background-color: #f2f2f2; 
+    border-radius: 5px; 
+}
+
+.message-container button {
+    margin-top: 10px; 
+}
+.col-content {
+  width: 80%; 
+  
+  margin: 0 auto; 
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+

@@ -9,6 +9,7 @@ function BuySolarPreview() {
       <h1 className="process-title">
         Buying solar panels in 2024: The complete guide
       </h1>
+      <h3 className="author">By Jesse Garlick  March 12, 2024</h3>
       <p className="process-description">
         Rooftop solar panels have transitioned from being considered luxury
         items to practical investments for many homeowners. Opting for solar

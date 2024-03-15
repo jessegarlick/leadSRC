@@ -1,334 +1,60 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body {
+  margin: 0; 
+  padding: 0; 
+  background-image: url("./images/solar.jpeg");
+  background-size: 100%; 
+  
 }
 
-/* Styling header */
 .app-header {
-  background-color: #355e3b;
+  position: top; /* Ensure header is fixed at the top */
+  top: 0;
+  width: 100%;
   padding: 10px 20px;
+  z-index: 1000; 
 }
 
-.app-header h1 {
+.app-header h3 {
   margin: 0;
-  font-size: 28px;
-  font-weight: bold;
-  color: #fff;
+  font-size: 24px;
+  color: #0c0909;
 }
 
 .nav-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 20px;
+  z-index: 999; 
 }
 
-.nav-bar a {
+.nav-bar a, .nav-toggle {
   text-decoration: none;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 18px;
   font-weight: 500;
   transition: color 0.3s ease;
   margin: 0 10px;
 }
 
-.nav-bar a:hover {
-  color: #9dc183;
+.nav-bar a:hover, .nav-toggle:hover {
+  color: #070606; 
 }
 
-.app-main {
-  padding: 20px;
+.nav-links {
+  display: flex;
+  align-items: center;
 }
 
-button {
-  background-color: #2e8b57;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
+.nav-toggle {
+  display: none; /* Hidden by default */
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  border-radius: 5px;
 }
 
-button:hover {
-  background-color: #266d47;
-}
 
-a {
-  color: #9dc183;
-  text-decoration: none;
-}
 
-a:hover {
-  text-decoration: underline;
-}
-
-.container-fluid {
+main {
+  position: relative;
   padding: 20px;
-  background-color: #f8f9fa;
-}
-
-.card {
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-body {
-  padding: 20px;
-}
-
-.card-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-}
-
-.card-text {
-  margin-bottom: 20px;
-  color: #666;
-}
-
-.btn {
-  font-weight: bold;
-  border-radius: 25px;
-}
-
-.btn-outline-light {
-  color: #9dc183;
-  background-color: transparent;
-  border: 2px solid #9dc183;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-outline-light:hover {
-  color: #fff;
-  background-color: #9dc183;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.container-fluid {
-  padding: 20px;
-  background-color: #f8f9fa;
-}
-
-.card {
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-body {
-  padding: 20px;
-}
-
-.card-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-}
-
-.card-text {
-  margin-bottom: 20px;
-  color: #666;
-}
-
-/* Additional styles for buttons, links, and the navbar from your provided CSS */
-.form-container {
-  background-color: #fff; /* White background */
-  padding: 20px; /* Padding around the form */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
-  max-width: 500px; /* Maximum width */
-  margin: auto; /* Center the form */
-}
-
-.buyer-form header h2 {
-  color: #355e3b; /* Green text to match the header */
-  text-align: center; /* Center the heading */
-  margin-bottom: 20px; /* Space below the heading */
-}
-
-.form-group {
-  margin-bottom: 20px; /* Space between form groups */
-}
-
-.form-group label {
-  display: block; /* Ensure the label is block-level for proper spacing */
-  margin-bottom: 5px; /* Small space between label and input */
-  color: #333; /* Dark text for readability */
-  font-weight: bold; /* Bold label text */
-}
-
-.form-group input {
-  width: 100%; /* Full width */
-  padding: 10px; /* Padding inside the input */
-  border-radius: 5px; /* Rounded corners for the input */
-  border: 1px solid #ccc; /* Subtle border */
-  font-size: 16px; /* Slightly larger font size */
-}
-
-.navigation-buttons {
-  display: flex; /* Align buttons in a row */
-  justify-content: space-between; /* Space out buttons */
-  margin-top: 20px; /* Space above the button group */
-}
-
-.navigation-buttons .btn {
-  padding: 10px 20px; /* Padding for buttons */
-  font-size: 16px; /* Button font size */
-  color: #fff; /* White text */
-  background-color: #2e8b57; /* Green background */
-  border: none; /* No border */
-  cursor: pointer; /* Cursor indicates button */
-  border-radius: 25px; /* Rounded buttons */
-}
-
-.navigation-buttons .btn:hover {
-  background-color: #266d47; /* Darker green on hover */
-}
-
-/* Optional: Styles for when a button is disabled */
-.navigation-buttons .btn:disabled {
-  background-color: #ccc; /* Grayed out */
-  cursor: not-allowed; /* Indicate the button is not clickable */
-}
-
-/* AdminBuyer component */
-.card {
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-body {
-  padding: 20px;
-}
-
-.card-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-}
-
-.card-text p {
-  margin-bottom: 5px;
-  color: #666;
-}
-
-.btn {
-  font-weight: bold;
-  border-radius: 25px;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-}
-
-.btn-danger:hover {
-  background-color: #bb2d3b;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-/* Form input styling */
-.form-control {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-/* Add this CSS to your index.css file or any other CSS file you are using */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center; /* Center text horizontally */
-}
-
-.btn-group {
-  margin-top: 20px; /* Adjust this value as needed */
-}
-
-.process-container {
-  text-align: center;
-  padding: 20px;
-}
-
-.process-title {
-  color: #333; /* Example color */
-  font-size: 2rem; /* Example font size */
-}
-
-.process-description {
-  margin-top: 20px;
-  border: 2px solid #ccc; /* Border */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow */
-  padding: 20px;
-  text-align: left;
-}
-
-.process-description p {
-  font-size: 1.2rem; /* Example font size */
-  color: #666; /* Example color */
-}
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: 50px; /* Adjust margin as needed */
-}
-
-.contact-title {
-  color: #333; /* Example color */
-  font-size: 2rem; /* Example font size */
-}
-
-.contact-info {
-  margin-top: 20px; /* Adjust margin as needed */
-  border: 2px solid #ccc; /* Border */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow */
-  padding: 20px;
-}
-
-.contact-info p {
-  font-size: 1.2rem; /* Example font size */
-  color: #666; /* Example color */
-}
-.hyper-link {
-  color: blue; /* Set the default text color */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  transition: color 0.3s ease; /* Smooth transition for color change */
-}
-
-.hyper-link:hover {
-  color: darkblue; /* Change text color on hover */
+  z-index: 1; 
 }
